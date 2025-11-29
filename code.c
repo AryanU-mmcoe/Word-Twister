@@ -1,45 +1,32 @@
 #include <stdio.h>
-#include<string.h>
-
-char s1[100] , s2[50];
-void lengthfind();
-void combine();
+#include <string.h>
 
 int main() {
-    int input;
+    char pass[30];
+    int length, special = 0;
     
-    printf("Welcome to Word Twister!! What would you like to do?\n1. Find length of a word\n2. Combine two words\n");
-    scanf("%d", &input);
-   
-   switch(input){
-       case 1:
-         lengthfind(s1);
-       break;
-       case 2:
-         combine();
-       break;
-       default:
-        printf("Invalid Input. Please Try again!");
-       break;
-   }
-    
+
+    printf("Enter your password: ");
+    scanf("%s", pass);
+
+    length = strlen(pass);
+
+    if (strchr(pass, '!') || strchr(pass, '@') || strchr(pass, '#') ||
+        strchr(pass, '$') || strchr(pass, '%') || strchr(pass, '&') || strchr(pass, '*')) {
+        special = 1;
+    }
+
+    printf("Password length: %d\n", length);
+
+    if (length < 6) {
+        printf("Password Strength: WEAK\n");
+    }
+    else if ((length >= 6 && special == 0) || (length <= 6 && special == 1)) {
+        printf("Password Strength: MEDIUM (Add Special Character to make password STRONGER)\n");
+    }
+    else {
+        printf("Password Strength: STRONG\n");
+    }
+
     return 0;
-}
-
-void lengthfind(){
-    printf("Enter your word(Up till 100 Characters): ");
-    scanf("%s", &s1);
-    int length = strlen(s1); 
-    printf("The length of the word is: %d\n", length);
-}
-
-void combine(){
-    printf("Enter your first word/sentence: ");
-    scanf("%s", &s1);
-    
-    printf("Enter your second word/sentence: ");
-    scanf("%s", &s2);
-    
-    strcat(s1, s2);
-    printf("%s\n", s1);
 }
