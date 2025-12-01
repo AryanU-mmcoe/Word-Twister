@@ -3,7 +3,7 @@
 
 int main() {
     char pass[30];
-    int length, special = 0;
+    int length = 0, special = 0;
     
     printf("Enter your password: ");
     scanf("%s", pass);
@@ -13,9 +13,8 @@ int main() {
 
         length++;
 
-        if (pass[i] == '!' || pass[i] == '@' || pass[i] == '#' ||
-            pass[i] == '$' || pass[i] == '%' || pass[i] == '&' ||
-            pass[i] == '*') {
+        if (pass[i] == '!' || pass[i] == '@' || pass[i] == '#' || pass[i] == '$' || pass[i] == '%' || pass[i] == '&' || pass[i] == '*') 
+        {
             special = 1;
         }
 
