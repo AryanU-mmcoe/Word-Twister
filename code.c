@@ -23,7 +23,7 @@ int main() {
 
     printf("Password length: %d\n", length);
 
-    if (length < 6) {
+    if (length < 6 && special ==0) {
         printf("Password Strength: WEAK\n");
     }
     else if ((length >= 6 && special == 0) || (length <= 6 && special == 1)) {
